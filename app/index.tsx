@@ -5,8 +5,12 @@ import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
+import { useRouter } from "expo-router";
+import AppGradient from "@/components/AppGradient";
 
 export default function App() {
+
+  const router = useRouter()
   return (
     <View className="flex-1">
       <ImageBackground
@@ -14,10 +18,7 @@ export default function App() {
         resizeMode="cover"
         className="flex-1"
       >
-        <LinearGradient
-          className="flex-1"
-          colors={["rgba(0,0,0,0.4)", "rgba(0,0,0,0.8)"]}
-        >
+        <AppGradient colors={["rgba(0,0,0,0.4)", "rgba(0,0,0,0.8)"]}>
           <SafeAreaView className="flex-1 px-1 justify-between">
             <View>
               <Text className="text-white text-4xl font-bold text-center">
@@ -30,13 +31,14 @@ export default function App() {
             
             <View className="pb-4 px-4 bg-white rounded-xl items-center justify-center">
               <CustomButton
-                onPress={() => console.log("tap")}
+                onPress={() => router.push("/nature-meditate")}
                 title="Get Started"
               />
             </View>
             <StatusBar style="light" />
           </SafeAreaView>
-        </LinearGradient>
+       
+        </AppGradient>
       </ImageBackground>
     </View>
   )
